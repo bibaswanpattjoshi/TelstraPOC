@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="margin_cardview">10dp</dimen>
+    <dimen name="t_18">18sp</dimen>
+    <dimen name="m_60">60dp</dimen>
+    <dimen name="m_16">16dp</dimen>
+    <dimen name="m_5">5dp</dimen>
+
 </resources>

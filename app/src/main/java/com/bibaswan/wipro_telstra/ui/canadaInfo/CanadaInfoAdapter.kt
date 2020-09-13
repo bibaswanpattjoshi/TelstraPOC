@@ -75,8 +75,8 @@ class CharacterViewHolder(private val itemBinding: ItemCanadaInfoBinding, privat
 
         val requestOptions = RequestOptions()
         requestOptions.override(120,120)
-        requestOptions.placeholder(R.mipmap.sym_def_app_icon)
-        requestOptions.error(R.mipmap.sym_def_app_icon)
+        requestOptions.placeholder(com.bibaswan.wipro_telstra.R.mipmap.ic_logo)
+        requestOptions.error(com.bibaswan.wipro_telstra.R.mipmap.ic_logo)
         Glide.with(itemBinding.root)
             .load(url)
             .apply(requestOptions)
