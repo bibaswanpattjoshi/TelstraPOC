@@ -1,10 +1,13 @@
 package com.bibaswan.wipro_telstra.ui
 
 
+import android.os.SystemClock
 import android.view.View
 import android.view.ViewGroup
 import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.assertion.ViewAssertions
 import androidx.test.espresso.assertion.ViewAssertions.doesNotExist
+import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.filters.LargeTest
 import androidx.test.rule.ActivityTestRule
@@ -28,46 +31,15 @@ class DataUnavailableTest {
     var mActivityTestRule = ActivityTestRule(MainActivity::class.java)
 
     @Test
-    fun dataUnavailableTest() {
-        val viewGroup = onView(
-            allOf(
-                childAtPosition(
-                    allOf(
-                        withId(R.id.refreshInfo),
-                        childAtPosition(
-                            IsInstanceOf.instanceOf(android.widget.FrameLayout::class.java),
-                            0
-                        )
-                    ),
-                    0
-                ),
-                isDisplayed()
-            )
-        )
-        viewGroup.check(doesNotExist())
+    fun DataUnavailableTest() {
+        SystemClock.sleep(4000)
 
-        val textView = onView(
+        val frameLayout = onView(
             allOf(
-                withId(R.id.title), withText("Beavers"),
+                withId(R.id.nav_host_fragment),
                 childAtPosition(
                     childAtPosition(
-                        IsInstanceOf.instanceOf(android.widget.FrameLayout::class.java),
-                        0
-                    ),
-                    0
-                ),
-                isDisplayed()
-            )
-        )
-        textView.check(doesNotExist())
-
-        val textView2 = onView(
-            allOf(
-                withId(R.id.description),
-                withText("Beavers are second only to humans in their ability to manipulate and change their environment. They can measure up to 1.3 metres long. A group of beavers is called a colony"),
-                childAtPosition(
-                    childAtPosition(
-                        IsInstanceOf.instanceOf(android.widget.FrameLayout::class.java),
+                        withId(android.R.id.content),
                         0
                     ),
                     1
@@ -75,22 +47,55 @@ class DataUnavailableTest {
                 isDisplayed()
             )
         )
-        textView2.check(doesNotExist())
+        frameLayout.check(ViewAssertions.matches(isDisplayed()))
 
-        val imageView = onView(
+        val frameLayout2 = onView(
             allOf(
-                withId(R.id.image),
+                withId(R.id.nav_host_fragment),
+                childAtPosition(
+                    allOf(
+                        withId(R.id.nav_host_fragment),
+                        childAtPosition(
+                            IsInstanceOf.instanceOf(android.widget.LinearLayout::class.java),
+                            1
+                        )
+                    ),
+                    0
+                ),
+                isDisplayed()
+            )
+        )
+        frameLayout2.check(ViewAssertions.matches(isDisplayed()))
+
+        val viewGroup = onView(
+            allOf(
+                withId(R.id.refreshInfo),
                 childAtPosition(
                     childAtPosition(
-                        IsInstanceOf.instanceOf(android.widget.FrameLayout::class.java),
+                        withId(R.id.nav_host_fragment),
                         0
+                    ),
+                    0
+                ),
+                isDisplayed()
+            )
+        )
+        viewGroup.check(ViewAssertions.matches(isDisplayed()))
+        val imageView = onView(
+            allOf(
+                withId(R.id.no_connection_img_vw),
+                childAtPosition(
+                    childAtPosition(
+                        withId(R.id.refreshInfo),
+                        1
                     ),
                     2
                 ),
                 isDisplayed()
             )
         )
-        imageView.check(doesNotExist())
+        imageView.check(matches(isDisplayed()))
+
     }
 
     private fun childAtPosition(

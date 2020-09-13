@@ -35,6 +35,13 @@
             app:layout_constraintTop_toTopOf="parent"
             android:indeterminate="true"
             android:visibility="gone"/>
+        <ImageView
+            android:id="@+id/no_connection_img_vw"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@mipmap/ic_internet_connected"
+            android:background="@android:color/white"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
             if(it.status == Resource.Status.SUCCESS){
                 navController.addOnDestinationChangedListener { controller, destination, arguments ->
                     if(!it.data?.title.isNullOrEmpty())
-                    toolbar.title = it.data?.title ?: "Canada"
+                    toolbar.title = it.data?.title ?: this.getString(R.string.loading)
 
                 }
             }

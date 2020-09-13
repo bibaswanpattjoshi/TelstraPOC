@@ -56,13 +56,17 @@ class CanadaInfosFragment : Fragment(), CanadaInfoAdapter.CharacterItemListener 
             when (it.status) {
                 Resource.Status.SUCCESS -> {
                     binding.progressBar.visibility = View.GONE
-                    if (!it.data?.rows.isNullOrEmpty()){
+                    if (!it.data?.rows.isNullOrEmpty()) {
                         adapter.setItems(ArrayList(it.data!!.rows))
-                         refreshInfo.isRefreshing = false;
-                        }
+                        refreshInfo.isRefreshing = false;
+                    }else{
+                        refreshInfo.isRefreshing = false;
+                        binding.noConnectionImgVw.visibility = View.VISIBLE
+                    }
                 }
-                Resource.Status.ERROR ->
+                Resource.Status.ERROR -> {
                     Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
+                }
 
                 Resource.Status.LOADING ->
                     binding.progressBar.visibility = View.VISIBLE
