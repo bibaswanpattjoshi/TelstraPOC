@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">TelstraPOC</string>
+    <string name="toolbar_">Canada</string>
+    <string name="toolbar_info">CanadaInfo</string>
+    <string name="splash_text">Telstra</string>
+    <string name="title_not_found">Title Not Found</string>
+    <string name="desc_not_found">Description Not Found</string>
+</resources>
